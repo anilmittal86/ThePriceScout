@@ -1,7 +1,7 @@
 
 # The Price Scout 🎮📉
 
-**The Price Scout** is a personal Telegram bot (found at **@ThepriceScoutBot**) that tracks Steam game prices in India (INR) and notifies you immediately when a price drop occurs.
+**The Price Scout** is a personal Telegram bot (found at **@SteamPriceScoutBot**) that tracks Steam game prices in India (INR) and notifies you immediately when a price drop occurs.
 
 It is designed to run locally on your laptop or on a low-cost cloud server, ensuring you never miss a sale on your favorite games.
 
