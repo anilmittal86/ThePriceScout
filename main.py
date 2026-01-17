@@ -43,8 +43,15 @@ def main():
     # Setup Job Queue
     job_queue = application.job_queue
     
-    # Run every 24 hours (86400 seconds)
-    job_queue.run_repeating(check_prices, interval=86400, first=10)
+    # Run every day at 10:00 AM
+    from datetime import time
+    
+    # Run daily at 10:00 AM
+    # Note: If the computer is off at 10 AM, it will miss the job until the next day.
+    job_queue.run_daily(check_prices, time=time(hour=10, minute=0))
+
+    # Also run once 10 seconds after startup/restart to ensure we check at least once today
+    job_queue.run_once(check_prices, 10)
     
     logger.info("Bot and Scheduler started. Checking prices every 60 seconds.")
     
