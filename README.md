@@ -1,30 +1,73 @@
 
-# Steam Price Drop Tracker
+# The Price Scout 🎮📉
 
-A Telegram bot that tracks Steam game prices and notifies you of drops.
+**The Price Scout** is a personal Telegram bot that tracks Steam game prices in India (INR) and notifies you immediately when a price drop occurs.
 
-## How to Run
+It is designed to run locally on your laptop or on a low-cost cloud server, ensuring you never miss a sale on your favorite games.
 
-### Option 1: Keep it Visible (Recommended for now)
-Run this command in your terminal:
+## ✨ Features
+- **🔍 Smart Scraper**: Fetches real-time prices from Steam's API (handles rate limits automatically).
+- **🤖 Telegram Bot**:
+    - `/add <app_id>`: Add a game to your watchlist (e.g., `813780` for Age of Empires II).
+    - `/list`: View all games you are tracking and their current prices.
+    - `/remove <app_id>`: Remove a game from tracking.
+- **⏰ Automatic Scheduler**: Checks for price drops every day at **10:00 AM** (and on startup).
+- **💾 Local Database**: Uses SQLite (`steam_tracker.db`) to store your watchlist efficiently.
+
+## 🚀 Setup Guide
+
+### prerequisites
+- Python 3.8 or higher.
+- A Telegram Bot Token (Get one from [@BotFather](https://t.me/BotFather)).
+
+### Installation
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/anilmittal86/ThePriceScout.git
+    cd ThePriceScout
+    ```
+
+2.  **Install Dependencies**
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3.  **Configure Environment**
+    - Create a file named `.env` in the project folder.
+    - Add your Telegram Bot Token inside it:
+      ```text
+      TELEGRAM_BOT_TOKEN=123456789:ABCdefGHIjklMNOpqrstUVwxyz
+      ```
+
+## 🎮 How to Use
+
+### Run Locally (Manual)
+To start the bot, simply run:
 ```bash
 python main.py
 ```
-**Note**: You must keep the terminal window **OPEN** for the bot to check prices. If you close the window, the bot stops.
+*Keep the terminal window open.*
 
-### Option 2: Run in Background (Hidden)
-If you want it to run even after you close the window, use `pythonw` (Windows only):
-```bash
-pythonw main.py
-```
-*   **To Stop it**: Open Task Manager, find `pythonw.exe`, and end the task.
-*   **Logs**: Check `bot.log` to see what it's doing since you won't have a visible window.
+### Run Locally (Automatic / Background)
+If you want the bot to run automatically when you turn on your PC:
+1.  Locate `start_bot.bat` in the project folder.
+2.  Press `Win + R`, type `shell:startup`, and press Enter.
+3.  Create a **Shortcut** to `start_bot.bat` inside this startup folder.
+4.  That's it! The bot will now start silently in the background every time you boot up.
 
-## Commands
-- `/add <app_id>`: Add a game (e.g., `813780` for AoE II: DE).
-- `/list`: See your watchlist.
-- `/remove <app_id>`: Remove a game.
+## 📱 Telegram Commands
+- **Start**: `/start`
+- **Add Game**: `/add <steam_app_id>`
+    - *Example*: `/add 813780` (Find ID in the URL: `store.steampowered.com/app/813780/...`)
+- **List Games**: `/list`
+- **Remove Game**: `/remove <steam_app_id>`
 
-## Configuration
-- **Frequency**: Checks prices every 24 hours.
-- **Data**: Stored in `steam_tracker.db`.
+## 🛠️ Tech Stack
+- **Language**: Python
+- **Bot Framework**: `python-telegram-bot`
+- **Scheduling**: `APScheduler`
+- **Database**: `SQLAlchemy` (SQLite)
+- **HTTP Client**: `httpx`
+
+---
+*Happy Gaming & Saving!* 💸
